@@ -14,7 +14,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-router.get('/combats', requireToken, (req, res, next) => {
+router.get('/combats', (req, res, next) => {
   Combat.find()
     .then(combats => {
       return combats.map(combat => combat.toObject())
