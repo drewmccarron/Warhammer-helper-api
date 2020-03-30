@@ -32,7 +32,7 @@ router.get('/combats/:id', (req, res, next) => {
 })
 
 // CREATE
-router.post('/combats', (req, res, next) => {
+router.post('/combats', requireToken, (req, res, next) => {
   req.body.combat.owner = req.user.id
 
   Combat.create(req.body.combat)
