@@ -6,7 +6,7 @@ const Combat = require('../models/combat')
 const customErrors = require('../../lib/custom_errors')
 
 const handle404 = customErrors.handle404
-const requireOwnership = customErrors.requireOwnership
+// const requireOwnership = customErrors.requireOwnership
 
 const removeBlanks = require('../../lib/remove_blank_fields')
 const requireToken = passport.authenticate('bearer', { session: false })
@@ -49,8 +49,7 @@ router.patch('/combats/:id', removeBlanks, (req, res, next) => {
   Combat.findById(req.params.id)
     .then(handle404)
     .then(combat => {
-      requireOwnership(req, combat)
-
+      // requireOwnership(req, combat)
       return combat.updateOne(req.body.combat)
     })
     .then(() => res.sendStatus(204))
@@ -62,7 +61,7 @@ router.delete('/combats/:id', (req, res, next) => {
   Combat.findById(req.params.id)
     .then(handle404)
     .then(combat => {
-      requireOwnership(req, combat)
+      // requireOwnership(req, combat)
       combat.deleteOne()
     })
     .then(() => res.sendStatus(204))
