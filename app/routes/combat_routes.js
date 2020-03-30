@@ -24,7 +24,7 @@ router.get('/combats', (req, res, next) => {
 })
 
 // SHOW
-router.get('/combats/:id', requireToken, (req, res, next) => {
+router.get('/combats/:id', (req, res, next) => {
   Combat.findById(req.params.id)
     .then(handle404)
     .then(combat => res.status(200).json({ combat: combat.toObject() }))
@@ -32,7 +32,7 @@ router.get('/combats/:id', requireToken, (req, res, next) => {
 })
 
 // CREATE
-router.post('/combats', requireToken, (req, res, next) => {
+router.post('/combats', (req, res, next) => {
   req.body.combat.owner = req.user.id
 
   Combat.create(req.body.combat)
@@ -43,7 +43,7 @@ router.post('/combats', requireToken, (req, res, next) => {
 })
 
 // UPDATE
-router.patch('/combats/:id', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/combats/:id', removeBlanks, (req, res, next) => {
   delete req.body.combat.owner
 
   Combat.findById(req.params.id)
@@ -58,7 +58,7 @@ router.patch('/combats/:id', requireToken, removeBlanks, (req, res, next) => {
 })
 
 // DESTROY
-router.delete('/combats/:id', requireToken, (req, res, next) => {
+router.delete('/combats/:id', (req, res, next) => {
   Combat.findById(req.params.id)
     .then(handle404)
     .then(combat => {
