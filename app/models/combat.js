@@ -33,7 +33,7 @@ const combatSchema = new mongoose.Schema({
   armorSave: {
     type: Number,
     min: 2,
-    max: 6
+    max: 7
   },
   fnp: {
     type: Number,
