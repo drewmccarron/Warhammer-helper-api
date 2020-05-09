@@ -15,10 +15,20 @@ const combatSchema = new mongoose.Schema({
     min: 2,
     max: 6
   },
+  hitReroll: {
+    type: Number,
+    min: 0,
+    max: 2
+  },
   wound: {
     type: Number,
     min: 2,
     max: 6
+  },
+  woundReroll: {
+    type: Number,
+    min: 0,
+    max: 2
   },
   rend: {
     type: Number,
@@ -35,10 +45,20 @@ const combatSchema = new mongoose.Schema({
     min: 2,
     max: 7
   },
+  armorSaveReroll: {
+    type: Number,
+    min: 0,
+    max: 2
+  },
   fnp: {
     type: Number,
     min: 2,
     max: 7
+  },
+  fnpReroll: {
+    type: Number,
+    min: 0,
+    max: 2
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
